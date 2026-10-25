@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type ArtProps = { className?: string };
 
 function Phone({
@@ -39,6 +41,15 @@ export default function ProjectArt({
       >
         <span className="hand absolute left-6 top-5 -rotate-6 text-sm text-ink/50">
           live rides ✦
+        </span>
+        <span className="absolute right-5 top-5 rounded-2xl border border-white/80 bg-white/70 p-1.5 shadow-[0_8px_18px_-12px_rgba(23,20,15,0.5)] backdrop-blur">
+          <Image
+            src="/trev-logo.png"
+            alt="Trev app icon"
+            width={40}
+            height={40}
+            className="h-9 w-9 rounded-xl"
+          />
         </span>
 
         <Phone className="-mr-10 translate-y-5 -rotate-[11deg]">
@@ -255,6 +266,13 @@ export function FanArt({
       <span className="absolute bottom-1.5 left-1.5 rounded-full bg-card px-1.5 py-0.5 font-mono text-[5px] uppercase">
         trip live
       </span>
+      <Image
+        src="/trev-logo.png"
+        alt=""
+        width={28}
+        height={28}
+        className="absolute right-1.5 top-1.5 h-7 w-7 rounded-md"
+      />
     </div>
   );
 }

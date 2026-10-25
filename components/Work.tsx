@@ -1,9 +1,11 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import SectionLabel from "./SectionLabel";
 import ProjectArt from "./ProjectArt";
 import { SiAppstore, SiGoogleplay } from "@icons-pack/react-simple-icons";
 import { ArrowUpRight, Star } from "./Icons";
-import { projects } from "@/lib/site-data";
+import { Sparkle } from "./Doodles";
+import { projects, sideProjects } from "@/lib/site-data";
 
 const variants = ["mobility", "edge", "scoring"] as const;
 
@@ -54,7 +56,17 @@ export default function Work() {
 
               <div className={index % 2 === 1 ? "md:order-1" : ""}>
                 <div className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+                  {index === 0 ? (
+                    <Image
+                      src="/trev-logo.png"
+                      alt="Trev logo"
+                      width={22}
+                      height={22}
+                      className="h-[1.4rem] w-[1.4rem] rounded-md"
+                    />
+                  ) : (
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+                  )}
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
                     {projectOverlines[index]}
                   </p>
@@ -114,7 +126,75 @@ export default function Work() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+        <div className="mt-16 border-t border-line pt-10 md:mt-20">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="eyebrow">Side projects</p>
+              <p className="hand mt-2 text-lg">built for fun</p>
+            </div>
+            <span className="chip">
+              <Star className="h-3 w-3" />
+              personal
+            </span>
+          </div>
+
+          {sideProjects.map((project) => (
+            <a
+              key={project.title}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-row group mt-6 grid gap-4 rounded-[1.8rem] border border-line bg-card p-3 transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-blue/30 hover:shadow-[0_28px_55px_-38px_rgba(23,20,15,0.45)] md:grid-cols-[0.95fr_1.05fr] md:p-4"
+            >
+              <div className="relative flex min-h-[13rem] items-center justify-center overflow-hidden rounded-[1.35rem] bg-ink p-7">
+                <Sparkle className="twinkle absolute left-6 top-6 h-4 w-4 text-yellow" />
+                <Sparkle
+                  className="twinkle absolute bottom-7 right-7 h-2.5 w-2.5 text-blue"
+                  style={{ "--delay": "1.4s" } as CSSProperties}
+                />
+                <Image
+                  src={project.logo}
+                  alt={`${project.title} logo`}
+                  width={497}
+                  height={175}
+                  className="relative w-[82%] max-w-[18rem] object-contain mix-blend-screen transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <span className="absolute bottom-4 left-4 rounded-full bg-white/10 px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.14em] text-white/60">
+                  side quest / 01
+                </span>
+              </div>
+
+              <div className="flex flex-col justify-center p-3 md:p-5">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-muted">
+                    {project.tagline}
+                  </p>
+                </div>
+                <h3 className="display mt-3 text-[clamp(2rem,3.4vw,2.9rem)] leading-none">
+                  {project.title}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
+                  {project.description}
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <li key={tag} className="chip">
+                      <span className="plus-mark">+</span>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+                <span className="blue-link mt-5 self-start">
+                  Visit Clubify
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
             More experiments on GitHub
           </p>

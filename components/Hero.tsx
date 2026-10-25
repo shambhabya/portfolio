@@ -13,7 +13,7 @@ import {
 import { FanArt } from "./ProjectArt";
 
 const fanCards = [
-  { title: "KifferAI", meta: "2024", variant: "mobility" as const },
+  { title: "Trev", meta: "2024", variant: "mobility" as const },
   { title: "Medical Edge", meta: "2024", variant: "edge" as const },
   { title: "UjuCode", meta: "2023", variant: "scoring" as const },
   { title: "SM", meta: "2026", variant: "profile" as const },

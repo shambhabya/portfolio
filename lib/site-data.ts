@@ -93,6 +93,18 @@ export const projects = [
   },
 ] as const;
 
+export const sideProjects = [
+  {
+    title: "Clubify",
+    tagline: "Social clubs, feeds & community",
+    description:
+      "A social platform for discovering clubs, sharing posts and connecting with people who share your interests. Includes feeds, profiles, post creation, image uploads, search and saved posts.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Appwrite"],
+    href: "https://clubify-nine.vercel.app",
+    logo: "/clubify-logo.png",
+  },
+] as const;
+
 export const experience = [
   {
     role: "Software Development Engineer I",
